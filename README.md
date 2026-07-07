@@ -249,19 +249,6 @@ docs/FXa_QSAR_GNN_Professional_Project_Summary.pdf
 
 ---
 
-## Public Release Checklist
-
-Before making the repository public:
-
-- [ ] Remove temporary notes, editor artifacts, logs, and private paths.
-- [ ] Confirm the exact ChEMBL release from the Step 01 log and report it consistently if included.
-- [ ] Include `README.md`, environment file, scripts, selected result tables, selected figures, and project summary.
-- [ ] Exclude raw large files, confidential material, tokens, and unnecessary model checkpoints.
-- [ ] Add an appropriate `LICENSE` file.
-- [ ] State clearly that this is a computational activity-prediction workflow, not an experimental validation study.
-
----
-
 ## Data and Software Attribution
 
 Bioactivity data were obtained from ChEMBL at EMBL-EBI. Users should cite ChEMBL and comply with ChEMBL data-use requirements.
@@ -272,7 +259,7 @@ This workflow uses open-source scientific Python and cheminformatics tools, incl
 
 ## Author
 
-**Malai**  
+** Elumalai Pavadai**  
 Computational chemistry / cheminformatics scientist with experience in QSAR/ML, graph neural networks, generative modeling, structure-based virtual screening, molecular modeling, and molecular dynamics.
 
 ---
