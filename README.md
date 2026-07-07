@@ -149,8 +149,6 @@ The following figures are recommended for GitHub or manuscript display when avai
 
 ![Active-learning Spearman curve](./results/figures/fxa_08_al_test_spearman_curve.png)
 
-If any figure file is not included in the public repository, remove or comment out the corresponding image link before release.
-
 ---
 
 ## Reproducibility
