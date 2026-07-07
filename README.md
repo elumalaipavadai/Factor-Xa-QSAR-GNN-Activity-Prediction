@@ -259,7 +259,7 @@ This workflow uses open-source scientific Python and cheminformatics tools, incl
 
 ## Author
 
-** Elumalai Pavadai**  
+**Elumalai Pavadai**  
 Computational chemistry / cheminformatics scientist with experience in QSAR/ML, graph neural networks, generative modeling, structure-based virtual screening, molecular modeling, and molecular dynamics.
 
 ---
