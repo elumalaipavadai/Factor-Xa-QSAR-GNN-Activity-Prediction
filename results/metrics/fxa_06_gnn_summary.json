@@ -1,0 +1,98 @@
+{
+  "script": "06_train_gnn_fxa.py",
+  "model": "GINE",
+  "device": "cpu",
+  "input_modeling_csv": ".\\data\\processed\\fxa_04_modeling_dataset.csv",
+  "input_y": ".\\data\\features\\fxa_04_y_pKi.npy",
+  "smiles_column": "model_smiles",
+  "target_column": "target_pKi",
+  "n_molecules": 3695,
+  "graph_feature_info": {
+    "atom_feature_dims": [
+      55,
+      4,
+      6,
+      8,
+      5,
+      2,
+      6,
+      3,
+      3
+    ],
+    "bond_feature_dims": [
+      14,
+      5,
+      3
+    ],
+    "atom_feature_count": 9,
+    "bond_feature_count": 3,
+    "note": "PyG from_smiles categorical atom/bond features were embedded rather than directly treated as continuous float features."
+  },
+  "training_config": {
+    "random_seed": 42,
+    "batch_size": 64,
+    "max_epochs": 150,
+    "patience": 25,
+    "hidden_dim": 128,
+    "num_gnn_layers": 3,
+    "dropout": 0.15,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "target_normalization": "pKi z-score using train split mean/std only"
+  },
+  "headline_split": "scaffold",
+  "comparison_split": "random",
+  "selection_rule": "Best model checkpoint selected by scaffold validation RMSE.",
+  "scaffold_valid_metrics": {
+    "model": "GINE",
+    "split_type": "scaffold",
+    "split": "valid",
+    "n": 554,
+    "best_epoch": 68,
+    "rmse": 1.0406901908178248,
+    "mae": 0.785233879777929,
+    "r2": 0.5900804051312483,
+    "spearman_r": 0.7672337210808637,
+    "spearman_p": 1.4735974650434637e-108
+  },
+  "scaffold_test_metrics": {
+    "model": "GINE",
+    "split_type": "scaffold",
+    "split": "test",
+    "n": 555,
+    "best_epoch": 68,
+    "rmse": 1.0564267803915626,
+    "mae": 0.7903597737217809,
+    "r2": 0.6009855492416794,
+    "spearman_r": 0.7752920654548195,
+    "spearman_p": 1.9319274535545645e-112
+  },
+  "model_paths": {
+    "scaffold": ".\\models\\fxa_06_scaffold_gine.pt",
+    "random": ".\\models\\fxa_06_random_gine.pt"
+  },
+  "best_scaffold_copy": ".\\models\\fxa_06_best_scaffold_gnn.pt",
+  "metrics_csv": ".\\results\\metrics\\fxa_06_gnn_metrics.csv",
+  "metrics_json": ".\\results\\metrics\\fxa_06_gnn_metrics.json",
+  "predictions_csv": ".\\results\\tables\\fxa_06_gnn_predictions.csv",
+  "history_csv": ".\\results\\metrics\\fxa_06_gnn_training_history.csv",
+  "figures": [
+    ".\\results\\figures\\fxa_06_scaffold_training_curve.png",
+    ".\\results\\figures\\fxa_06_random_training_curve.png",
+    ".\\results\\figures\\fxa_06_scaffold_test_pred_vs_actual.png"
+  ],
+  "baseline_comparison": {
+    "classical_best_feature_set": "Morgan_2048",
+    "classical_best_model": "RandomForest",
+    "classical_scaffold_test_rmse": 0.9733220318996079,
+    "classical_scaffold_test_mae": 0.7279664388991355,
+    "classical_scaffold_test_r2": 0.6612939699542646,
+    "classical_scaffold_test_spearman": 0.8125299262029726,
+    "gnn_scaffold_test_rmse": 1.0564267803915626,
+    "gnn_scaffold_test_mae": 0.7903597737217809,
+    "gnn_scaffold_test_r2": 0.6009855492416794,
+    "gnn_scaffold_test_spearman": 0.7752920654548195,
+    "gnn_minus_classical_rmse": 0.0831047484919547
+  },
+  "important_note": "Use scaffold test performance as the headline GNN result. Random split performance is comparison only and usually more optimistic."
+}

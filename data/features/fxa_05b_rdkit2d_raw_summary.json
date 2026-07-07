@@ -1,0 +1,12 @@
+{
+  "n_molecules": 3695,
+  "n_invalid_molecules": 0,
+  "n_descriptors_raw": 208,
+  "n_descriptor_value_failures": 0,
+  "n_total_matrix_entries": 768560,
+  "n_nan_entries": 5,
+  "fraction_nan_entries": 6.505672946809618e-06,
+  "n_all_nan_descriptor_columns_raw": 0,
+  "all_nan_descriptor_columns_raw": [],
+  "important_note": "This is a raw descriptor matrix. Imputation and variance filtering are fit only on each training split inside sklearn Pipeline."
+}

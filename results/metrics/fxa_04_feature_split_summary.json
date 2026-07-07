@@ -1,0 +1,99 @@
+{
+  "script": "04_make_features_and_splits.py",
+  "input_csv": ".\\data\\processed\\fxa_02_curated_structure_level.csv",
+  "modeling_csv": ".\\data\\processed\\fxa_04_modeling_dataset.csv",
+  "n_input_rows": 3695,
+  "n_after_target_smiles_drop": 3695,
+  "n_after_smiles_validation": 3695,
+  "n_duplicate_model_smiles_removed": 0,
+  "n_modeling_rows": 3695,
+  "smiles_column": "smiles",
+  "model_smiles_column": "model_smiles",
+  "target_column": "target_pKi",
+  "target_summary": {
+    "min": 2.2596373558044434,
+    "max": 12.0,
+    "mean": 7.076051712036133,
+    "std": 1.7186853885650635
+  },
+  "fingerprint": {
+    "type": "Morgan",
+    "api": "rdFingerprintGenerator.GetMorganGenerator",
+    "radius": 2,
+    "n_bits": 2048,
+    "dtype": "uint8",
+    "shape": [
+      3695,
+      2048
+    ]
+  },
+  "fractions_requested": {
+    "train": 0.7,
+    "valid": 0.15,
+    "test": 0.15
+  },
+  "scaffold_split": {
+    "method": "Bemis-Murcko scaffold split",
+    "scaffold_smiles_isomeric": false,
+    "train": 2586,
+    "valid": 554,
+    "test": 555,
+    "n_unique_murcko_scaffolds": 1428,
+    "train_target_summary": {
+      "name": "scaffold_train",
+      "n": 2586,
+      "target_min": 3.0,
+      "target_max": 11.397939682006836,
+      "target_mean": 7.101961135864258,
+      "target_std": 1.7457530498504639
+    },
+    "valid_target_summary": {
+      "name": "scaffold_valid",
+      "n": 554,
+      "target_min": 3.431798219680786,
+      "target_max": 12.0,
+      "target_mean": 7.117709159851074,
+      "target_std": 1.6254444122314453
+    },
+    "test_target_summary": {
+      "name": "scaffold_test",
+      "n": 555,
+      "target_min": 2.2596373558044434,
+      "target_max": 11.397939682006836,
+      "target_mean": 6.9137444496154785,
+      "target_std": 1.6724190711975098
+    }
+  },
+  "random_split": {
+    "method": "random split",
+    "train": 2586,
+    "valid": 554,
+    "test": 555,
+    "train_target_summary": {
+      "name": "random_train",
+      "n": 2586,
+      "target_min": 2.2596373558044434,
+      "target_max": 11.397939682006836,
+      "target_mean": 7.035950183868408,
+      "target_std": 1.7104696035385132
+    },
+    "valid_target_summary": {
+      "name": "random_valid",
+      "n": 554,
+      "target_min": 3.0,
+      "target_max": 11.301030158996582,
+      "target_mean": 7.089147567749023,
+      "target_std": 1.7095463275909424
+    },
+    "test_target_summary": {
+      "name": "random_test",
+      "n": 555,
+      "target_min": 3.0,
+      "target_max": 12.0,
+      "target_mean": 7.2498345375061035,
+      "target_std": 1.7545820474624634
+    }
+  },
+  "random_seed": 42,
+  "important_note": "Use scaffold split as the headline evaluation. Use random split only as a comparison. All later models must reuse these exact saved split index files."
+}

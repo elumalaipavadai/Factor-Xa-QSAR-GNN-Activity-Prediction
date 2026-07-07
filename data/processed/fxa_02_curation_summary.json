@@ -1,0 +1,92 @@
+{
+  "created_at": "2026-06-16T18:25:42",
+  "script": "02_curate_selected_endpoint_dataset.py",
+  "input_file": "data\\processed\\fxa_p0_selected_ki_binding_only.csv",
+  "selected_standard_type": "Ki",
+  "endpoint_column": "pKi",
+  "target_column": "target_pKi",
+  "group_by_first_stage": "molecule_chembl_id",
+  "replicate_spread_threshold_log_units": 1.0,
+  "high_spread_molecule_action": "dropped_from_final",
+  "structure_dedup_action": "collapsed_by_canonical_smiles_rdkit",
+  "duplicate_smiles_spread_threshold_log_units": 1.0,
+  "standardization_policy": {
+    "largest_fragment": true,
+    "rdkit_sanitize": true,
+    "canonical_isomeric_smiles": true,
+    "uncharging": false,
+    "tautomer_canonicalization": false,
+    "note": "Light standardization only. Charge/tautomer normalization is intentionally not applied to avoid changing chemical identity assumptions without explicit review."
+  },
+  "pchembl_cross_check": {
+    "pchembl_rows_available": 4125,
+    "pchembl_rows_checked": 4125,
+    "pchembl_max_abs_diff": 0.005496221825573855,
+    "pchembl_mean_abs_diff": 0.002380855288121203,
+    "pchembl_rows_above_tolerance": 0,
+    "pchembl_tolerance": 0.05,
+    "pchembl_check_passed": true,
+    "pchembl_check_note": "PASS: recomputed pKi agrees with pchembl_value within 0.05 log units where pchembl_value exists."
+  },
+  "record_level_counts": {
+    "input_activity_records": 4232,
+    "input_unique_molecule_chembl_ids": 3741,
+    "input_unique_smiles_original": 3741,
+    "after_units_nM_records": 4232,
+    "after_relation_equal_records": 4232,
+    "after_positive_numeric_value_records": 4232,
+    "after_nonmissing_smiles_records": 4232,
+    "after_rdkit_valid_records": 4232,
+    "after_rdkit_valid_unique_molecule_chembl_ids": 3741,
+    "after_rdkit_valid_unique_canonical_smiles": 3716,
+    "after_endpoint_calculated_records": 4232,
+    "invalid_or_dropped_record_level_rows": 0
+  },
+  "duplicate_smiles_stats": {
+    "molecule_level_rows_before_structure_dedup": 3720,
+    "unique_canonical_smiles_before_structure_dedup": 3696,
+    "rows_with_duplicate_canonical_smiles_before_structure_dedup": 48,
+    "duplicate_canonical_smiles_groups_before_structure_dedup": 24,
+    "structure_level_rows_after_collapse_before_high_spread_drop": 3696,
+    "high_duplicate_smiles_spread_groups": 1,
+    "final_structure_level_rows_after_structure_dedup": 3695,
+    "duplicate_smiles_spread_threshold_log_units": 1.0
+  },
+  "final_counts": {
+    "input_activity_records": 4232,
+    "input_unique_molecule_chembl_ids": 3741,
+    "valid_activity_records_pre_aggregation": 4232,
+    "valid_unique_molecule_chembl_ids_pre_aggregation": 3741,
+    "valid_unique_canonical_smiles_pre_aggregation": 3716,
+    "molecule_level_rows_after_aggregation": 3741,
+    "molecule_level_unique_canonical_smiles_after_aggregation": 3716,
+    "high_replicate_spread_molecule_groups": 21,
+    "molecule_level_rows_after_high_spread_filter": 3720,
+    "structure_level_rows_final": 3695,
+    "structure_level_unique_canonical_smiles_final": 3695,
+    "final_unique_molecule_chembl_ids": 3695
+  },
+  "output_files": {
+    "valid_records_pre_aggregation": "data\\processed\\fxa_02_valid_activity_records_pre_aggregation.csv",
+    "invalid_or_dropped_record_level_rows": "data\\processed\\fxa_02_invalid_or_dropped_record_level_rows.csv",
+    "molecule_level_replicate_summary": "data\\processed\\fxa_02_molecule_level_replicate_summary.csv",
+    "high_replicate_spread_molecule_groups": "data\\processed\\fxa_02_high_replicate_spread_molecule_groups.csv",
+    "duplicate_canonical_smiles_rows": "data\\processed\\fxa_02_duplicate_canonical_smiles_rows.csv",
+    "structure_level_collapsed_all_before_duplicate_spread_drop": "data\\processed\\fxa_02_structure_level_collapsed_all_before_duplicate_spread_drop.csv",
+    "high_duplicate_smiles_spread_groups": "data\\processed\\fxa_02_high_duplicate_smiles_spread_groups.csv",
+    "final_curated_structure_level": "data\\processed\\fxa_02_curated_structure_level.csv",
+    "legacy_final_curated_compound_level": "data\\processed\\fxa_02_curated_compound_level.csv",
+    "curation_counts": "data\\processed\\fxa_02_curation_counts.csv"
+  },
+  "curation_notes": [
+    "Input rows are ChEMBL activity records, not unique compounds.",
+    "pEndpoint is recomputed from nM values using pEndpoint = 9 - log10(nM).",
+    "pEndpoint is cross-checked against ChEMBL pchembl_value where available.",
+    "SMILES are parsed and canonicalized with RDKit after keeping the largest fragment.",
+    "No uncharging or tautomer canonicalization is performed.",
+    "Replicate records are first aggregated by molecule_chembl_id using median pEndpoint.",
+    "High replicate-spread molecule groups are dropped unless --keep-high-spread is used.",
+    "Residual duplicate RDKit canonical SMILES groups are collapsed by default to reduce train/test leakage risk.",
+    "The final CSV is the structure-level modeling dataset for descriptor baselines and GNN modeling."
+  ]
+}

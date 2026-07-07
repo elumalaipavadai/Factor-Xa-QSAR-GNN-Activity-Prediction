@@ -1,0 +1,13 @@
+arm,rmse_threshold,first_round_reaching_threshold,n_labeled_reaching_threshold
+random,1.2,1.0,309.0
+random,1.1733,1.0,309.0
+random,1.1,7.0,609.0
+random,1.0733,11.0,809.0
+random,1.0233,,
+random,1.0,,
+uncertainty,1.2,1.0,309.0
+uncertainty,1.1733,1.0,309.0
+uncertainty,1.1,5.0,509.0
+uncertainty,1.0733,6.0,559.0
+uncertainty,1.0233,12.0,859.0
+uncertainty,1.0,18.0,1159.0

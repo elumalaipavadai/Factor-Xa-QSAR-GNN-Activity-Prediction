@@ -1,0 +1,35 @@
+{
+  "selected_activity_type": "Ki",
+  "selected_assay_filter": "binding_only",
+  "activity_selection_reason": "Ki selected because it has 4,232 clean records, meeting threshold 200.",
+  "assay_selection_reason": "Binding assays preferred and used because Ki has 4,232 clean binding-assay records, meeting threshold 200.",
+  "created_at": "2026-06-16T18:01:31",
+  "target_chembl_id": "CHEMBL244",
+  "min_records": 200,
+  "ki_counts": {
+    "raw_total": 4766,
+    "after_standard_type": 4766,
+    "after_units_nM": 4735,
+    "after_relation_equal": 4235,
+    "after_positive_numeric_value": 4232,
+    "after_nonmissing_smiles": 4232,
+    "binding_assay_clean": 4232
+  },
+  "ic50_counts": {
+    "raw_total": 3930,
+    "after_standard_type": 3930,
+    "after_units_nM": 3851,
+    "after_relation_equal": 3345,
+    "after_positive_numeric_value": 3345,
+    "after_nonmissing_smiles": 3345,
+    "binding_assay_clean": 3312
+  },
+  "final_record_count": 4232,
+  "final_output": ".\\data\\processed\\fxa_p0_selected_ki_binding_only.csv",
+  "raw_outputs": {
+    "Ki": ".\\data\\raw\\chembl_fxa_CHEMBL244_Ki_raw.csv",
+    "IC50": ".\\data\\raw\\chembl_fxa_CHEMBL244_IC50_raw.csv"
+  },
+  "count_output": ".\\data\\processed\\fxa_p0_activity_counts.csv",
+  "important_rule": "Ki and IC50 were counted separately. Only one activity type was selected. They were not combined."
+}

@@ -1,0 +1,19 @@
+split_type,feature_set,model,raw_n_features,n_features_after_train_fit_preprocessing,preprocessing,model_path
+scaffold,Morgan_2048,RandomForest,2048,1948,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_morgan_2048_randomforest.joblib
+scaffold,Morgan_2048,XGBoost,2048,1948,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_morgan_2048_xgboost.joblib
+scaffold,Morgan_2048,LightGBM,2048,1948,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_morgan_2048_lightgbm.joblib
+scaffold,RDKit_2D_raw,RandomForest,208,190,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_rdkit_2d_raw_randomforest.joblib
+scaffold,RDKit_2D_raw,XGBoost,208,190,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_rdkit_2d_raw_xgboost.joblib
+scaffold,RDKit_2D_raw,LightGBM,208,190,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_rdkit_2d_raw_lightgbm.joblib
+scaffold,Morgan_plus_RDKit_2D_raw,RandomForest,2256,2138,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_morgan_plus_rdkit_2d_raw_randomforest.joblib
+scaffold,Morgan_plus_RDKit_2D_raw,XGBoost,2256,2138,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_morgan_plus_rdkit_2d_raw_xgboost.joblib
+scaffold,Morgan_plus_RDKit_2D_raw,LightGBM,2256,2138,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_scaffold_morgan_plus_rdkit_2d_raw_lightgbm.joblib
+random,Morgan_2048,RandomForest,2048,2006,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_morgan_2048_randomforest.joblib
+random,Morgan_2048,XGBoost,2048,2006,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_morgan_2048_xgboost.joblib
+random,Morgan_2048,LightGBM,2048,2006,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_morgan_2048_lightgbm.joblib
+random,RDKit_2D_raw,RandomForest,208,191,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_rdkit_2d_raw_randomforest.joblib
+random,RDKit_2D_raw,XGBoost,208,191,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_rdkit_2d_raw_xgboost.joblib
+random,RDKit_2D_raw,LightGBM,208,191,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_rdkit_2d_raw_lightgbm.joblib
+random,Morgan_plus_RDKit_2D_raw,RandomForest,2256,2197,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_morgan_plus_rdkit_2d_raw_randomforest.joblib
+random,Morgan_plus_RDKit_2D_raw,XGBoost,2256,2197,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_morgan_plus_rdkit_2d_raw_xgboost.joblib
+random,Morgan_plus_RDKit_2D_raw,LightGBM,2256,2197,"SimpleImputer(median) + VarianceThreshold(0.0), fit on train only",.\models\fxa_05b_random_morgan_plus_rdkit_2d_raw_lightgbm.joblib

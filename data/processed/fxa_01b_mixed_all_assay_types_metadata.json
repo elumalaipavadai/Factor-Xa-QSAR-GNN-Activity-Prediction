@@ -1,0 +1,68 @@
+{
+  "created_at": "2026-06-16T18:17:22",
+  "script": "01b_pull_chembl_fxa_endpoint_baselines.py",
+  "target_chembl_id": "CHEMBL244",
+  "mode": "mixed",
+  "activity_types_pulled": [
+    "Ki",
+    "IC50"
+  ],
+  "endpoint_column": "pActivity",
+  "assay_type_filter": "not_applied",
+  "raw_counts_by_activity_type": {
+    "Ki": 4766,
+    "IC50": 3930
+  },
+  "filter_counts_pre_dedup": {
+    "raw_records": 8696,
+    "raw_unique_molecule_chembl_ids": 7039,
+    "raw_unique_smiles": 7039,
+    "after_endpoint_type_filter_records": 8696,
+    "after_endpoint_type_filter_unique_molecule_chembl_ids": 7039,
+    "after_endpoint_type_filter_unique_smiles": 7039,
+    "after_units_nM_records": 8586,
+    "after_units_nM_unique_molecule_chembl_ids": 6936,
+    "after_units_nM_unique_smiles": 6936,
+    "after_relation_equal_records": 7580,
+    "after_relation_equal_unique_molecule_chembl_ids": 6065,
+    "after_relation_equal_unique_smiles": 6065,
+    "after_positive_numeric_value_records": 7577,
+    "after_positive_numeric_value_unique_molecule_chembl_ids": 6062,
+    "after_positive_numeric_value_unique_smiles": 6062,
+    "after_nonmissing_smiles_records": 7577,
+    "after_nonmissing_smiles_unique_molecule_chembl_ids": 6062,
+    "after_nonmissing_smiles_unique_smiles": 6062,
+    "assay_type_split_after_basic_filters": {
+      "B": 7544,
+      "A": 33
+    },
+    "assay_type_filter_applied": "not_applied",
+    "final_pre_dedup_records": 7577,
+    "final_pre_dedup_unique_molecule_chembl_ids": 6062,
+    "final_pre_dedup_unique_smiles": 6062,
+    "endpoint_source_split_final_pre_dedup_records": {
+      "Ki": 4232,
+      "IC50": 3345
+    },
+    "compounds_with_both_Ki_and_IC50_final_pre_dedup": 133,
+    "pchembl_cross_check": {
+      "pchembl_rows_available": 7425,
+      "pchembl_rows_checked": 7425,
+      "pchembl_max_abs_diff": 0.005496221825573855,
+      "pchembl_mean_abs_diff": 0.0023957978628318826,
+      "pchembl_rows_above_tolerance": 0,
+      "pchembl_tolerance": 0.05,
+      "pchembl_check_passed": true,
+      "pchembl_check_note": "PASS: computed pActivity agrees with pchembl_value within 0.05 log units where pchembl_value exists."
+    }
+  },
+  "counting_caveat": "ChEMBL rows are activity records, not unique compounds. Counts are pre-deduplication record counts unless explicitly labeled unique_molecule_chembl_ids or unique_smiles.",
+  "deduplication_deferred_to": "Step 02 curation. Recommended aggregation: group by molecule_chembl_id and endpoint, take median pEndpoint, and flag/drop compounds with replicate spread > about 1 log unit.",
+  "assay_type_caution": "Do not assume assay_type B is always better for enzyme inhibition targets. Many valid FXa enzymatic inhibition assays may be classified as F.",
+  "formula": "pActivity = 9 - log10(standard_value_nM)",
+  "combined_raw_output": ".\\data\\raw\\chembl_fxa_CHEMBL244_mixed_all_assay_types_raw_combined.csv",
+  "final_pre_dedup_output": ".\\data\\processed\\fxa_01b_mixed_all_assay_types_pActivity_pre_dedup.csv",
+  "endpoint_count_output": ".\\data\\processed\\fxa_01b_mixed_all_assay_types_endpoint_counts_pre_dedup.csv",
+  "assay_count_output": ".\\data\\processed\\fxa_01b_mixed_all_assay_types_assay_type_counts_pre_dedup.csv",
+  "purpose": "Mixed-endpoint baseline/sensitivity dataset. Ki and IC50 are intentionally combined into pActivity. This should not be described as direct paper reproduction."
+}

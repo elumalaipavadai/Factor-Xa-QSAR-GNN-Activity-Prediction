@@ -1,0 +1,96 @@
+{
+  "script": "08_active_learning_uncertainty_vs_random.py",
+  "design": {
+    "fixed_test_set": "fxa_04_scaffold_test.npy",
+    "acquisition_pool": "fxa_04_scaffold_train.npy",
+    "validation_set_used_for_acquisition": false,
+    "test_set_used_for_acquisition": false,
+    "arms": [
+      "random",
+      "uncertainty"
+    ],
+    "same_initial_labeled_set_per_seed_for_both_arms": true,
+    "initial_labeled_fraction": 0.1,
+    "batch_size": 50,
+    "max_rounds": 20,
+    "seeds": [
+      11,
+      22,
+      33,
+      44,
+      55
+    ],
+    "anti_leakage_checks": [
+      "scaffold train pool disjoint from scaffold test",
+      "initial labeled set disjoint from scaffold test",
+      "each acquisition batch disjoint from scaffold test",
+      "all acquired molecules disjoint from scaffold test"
+    ]
+  },
+  "model": {
+    "feature_set": "Morgan_2048",
+    "model_family": "RandomForestRegressor",
+    "n_estimators": 300,
+    "max_features": "sqrt",
+    "min_samples_leaf": 1
+  },
+  "step05b_reference": {
+    "best_feature_set": "Morgan_2048",
+    "best_model": "RandomForest",
+    "full_baseline_scaffold_test_rmse": 0.9733220318996079,
+    "full_baseline_scaffold_test_mae": 0.7279664388991355,
+    "full_baseline_scaffold_test_spearman": 0.8125299262029726
+  },
+  "outputs": {
+    "round_metrics_csv": ".\\results\\metrics\\fxa_08_active_learning_round_metrics.csv",
+    "curve_summary_csv": ".\\results\\metrics\\fxa_08_active_learning_curve_summary.csv",
+    "final_comparison_csv": ".\\results\\metrics\\fxa_08_active_learning_final_comparison.csv",
+    "label_efficiency_csv": ".\\results\\metrics\\fxa_08_active_learning_label_efficiency.csv",
+    "acquisitions_csv": ".\\results\\tables\\fxa_08_active_learning_acquisitions.csv",
+    "figures": [
+      ".\\results\\figures\\fxa_08_al_test_rmse_curve.png",
+      ".\\results\\figures\\fxa_08_al_test_spearman_curve.png",
+      ".\\results\\figures\\fxa_08_al_test_mae_curve.png"
+    ]
+  },
+  "final_comparison": [
+    {
+      "arm": "random",
+      "final_round": 20,
+      "final_n_labeled_mean": 1259.0,
+      "final_rmse_mean": 1.0280536165038339,
+      "final_rmse_std": 0.013370925134886366,
+      "final_mae_mean": 0.7748194947244308,
+      "final_mae_std": 0.013303204657712028,
+      "final_spearman_mean": 0.7897262195305754,
+      "final_spearman_std": 0.004847179576512069,
+      "rmse_normalized_auc_mean": 1.087289910221887,
+      "rmse_normalized_auc_std": 0.009037350600192074,
+      "mae_normalized_auc_mean": 0.8336963877069374,
+      "mae_normalized_auc_std": 0.012906061364271026
+    },
+    {
+      "arm": "uncertainty",
+      "final_round": 20,
+      "final_n_labeled_mean": 1259.0,
+      "final_rmse_mean": 0.9964055893388538,
+      "final_rmse_std": 0.012483151439739899,
+      "final_mae_mean": 0.7531639060552007,
+      "final_mae_std": 0.01124752209044891,
+      "final_spearman_mean": 0.8052595313241767,
+      "final_spearman_std": 0.005509377025807959,
+      "rmse_normalized_auc_mean": 1.0509941237511415,
+      "rmse_normalized_auc_std": 0.012719786878771904,
+      "mae_normalized_auc_mean": 0.8072423592306508,
+      "mae_normalized_auc_std": 0.009186568590324604
+    }
+  ],
+  "delta_summary": {
+    "final_rmse_uncertainty_minus_random": -0.03164802716498005,
+    "final_mae_uncertainty_minus_random": -0.02165558866923012,
+    "final_spearman_uncertainty_minus_random": 0.01553331179360129,
+    "rmse_auc_uncertainty_minus_random": -0.036295786470745384,
+    "interpretation_note": "For RMSE/MAE and RMSE AUC, negative values favor uncertainty acquisition. For Spearman, positive values favor uncertainty acquisition."
+  },
+  "important_interpretation_note": "This is a retrospective active-learning simulation. The fixed scaffold test set is never acquired or trained on. Uncertainty sampling is evaluated only by whether it improves label efficiency relative to random acquisition."
+}

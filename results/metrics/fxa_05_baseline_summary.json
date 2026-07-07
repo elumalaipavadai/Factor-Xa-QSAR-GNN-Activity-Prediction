@@ -1,0 +1,26 @@
+{
+  "script": "05_train_baselines_morgan.py",
+  "feature_set": "Morgan_2048",
+  "models": [
+    "LightGBM",
+    "RandomForest",
+    "XGBoost"
+  ],
+  "selection_rule": "Best scaffold validation RMSE",
+  "best_scaffold_valid_model": "RandomForest",
+  "best_scaffold_valid_rmse": 0.9932270083776368,
+  "best_scaffold_test_metrics": {
+    "rmse": 0.9745341102523478,
+    "mae": 0.7297682668041667,
+    "r2": 0.6604498631628287,
+    "spearman_r": 0.8121745982357563,
+    "spearman_p": 1.6058716053500882e-131
+  },
+  "outputs": {
+    "metrics_csv": ".\\results\\metrics\\fxa_05_baseline_metrics.csv",
+    "metrics_json": ".\\results\\metrics\\fxa_05_baseline_metrics.json",
+    "predictions_csv": ".\\results\\tables\\fxa_05_baseline_predictions.csv",
+    "best_model": ".\\models\\fxa_05_best_scaffold_morgan_model.joblib",
+    "figure": ".\\results\\figures\\fxa_05_scaffold_test_pred_vs_actual_best.png"
+  }
+}

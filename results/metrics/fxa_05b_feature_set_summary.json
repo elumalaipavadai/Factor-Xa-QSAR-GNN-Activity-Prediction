@@ -1,0 +1,83 @@
+{
+  "script": "05b_benchmark_morgan_rdkit2d_combined_features.py",
+  "input_modeling_csv": ".\\data\\processed\\fxa_04_modeling_dataset.csv",
+  "input_morgan_X": ".\\data\\features\\fxa_04_X_morgan_2048.npy",
+  "input_y": ".\\data\\features\\fxa_04_y_pKi.npy",
+  "feature_sets": {
+    "Morgan_2048": {
+      "shape": [
+        3695,
+        2048
+      ],
+      "source": ".\\data\\features\\fxa_04_X_morgan_2048.npy"
+    },
+    "RDKit_2D_raw": {
+      "shape": [
+        3695,
+        208
+      ],
+      "source": ".\\data\\features\\fxa_05b_X_rdkit2d_raw.npy",
+      "descriptor_names": ".\\data\\features\\fxa_05b_rdkit2d_descriptor_names.txt",
+      "raw_descriptor_summary": ".\\data\\features\\fxa_05b_rdkit2d_raw_summary.json"
+    },
+    "Morgan_plus_RDKit_2D_raw": {
+      "shape": [
+        3695,
+        2256
+      ],
+      "source": ".\\data\\features\\fxa_05b_X_morgan_plus_rdkit2d_raw.npy"
+    }
+  },
+  "leakage_control": {
+    "raw_descriptor_computation": "Computed independently per molecule.",
+    "imputation": "SimpleImputer(strategy='median') fit on train split only.",
+    "variance_filtering": "VarianceThreshold(0.0) fit on train split only.",
+    "validation_test_use": "Validation/test splits are transformed only by preprocessing learned from train."
+  },
+  "models_trained": [
+    "LightGBM",
+    "RandomForest",
+    "XGBoost"
+  ],
+  "headline_split": "scaffold",
+  "comparison_split": "random",
+  "selection_rule": "Best feature/model selected by scaffold validation RMSE, not test RMSE.",
+  "best_scaffold_valid_feature_set": "Morgan_2048",
+  "best_scaffold_valid_model": "RandomForest",
+  "best_scaffold_valid_metrics": {
+    "feature_set": "Morgan_2048",
+    "split_type": "scaffold",
+    "split": "valid",
+    "model": "RandomForest",
+    "n": 554,
+    "rmse": 0.9963254374749323,
+    "mae": 0.7602347216605678,
+    "r2": 0.6242852944118501,
+    "spearman_r": 0.7925068926069021,
+    "spearman_p": 1.2009149833381607e-120
+  },
+  "best_scaffold_test_metrics": {
+    "feature_set": "Morgan_2048",
+    "split_type": "scaffold",
+    "split": "test",
+    "model": "RandomForest",
+    "n": 555,
+    "rmse": 0.9733220318996079,
+    "mae": 0.7279664388991355,
+    "r2": 0.6612939699542646,
+    "spearman_r": 0.8125299262029726,
+    "spearman_p": 1.0038715044026997e-131
+  },
+  "best_model_path": ".\\models\\fxa_05b_scaffold_morgan_2048_randomforest.joblib",
+  "best_model_copy": ".\\models\\fxa_05b_best_scaffold_feature_model.joblib",
+  "metrics_csv": ".\\results\\metrics\\fxa_05b_feature_set_metrics.csv",
+  "metrics_json": ".\\results\\metrics\\fxa_05b_feature_set_metrics.json",
+  "predictions_csv": ".\\results\\tables\\fxa_05b_feature_set_predictions.csv",
+  "preprocessing_csv": ".\\results\\metrics\\fxa_05b_preprocessing_fit_summary.csv",
+  "figures": [
+    ".\\results\\figures\\fxa_05b_scaffold_valid_rmse_by_feature_set.png",
+    ".\\results\\figures\\fxa_05b_scaffold_test_rmse_by_feature_set.png",
+    ".\\results\\figures\\fxa_05b_best_scaffold_test_pred_vs_actual.png"
+  ],
+  "important_note": "Use scaffold test performance as the headline comparison. Random split performance is comparison only and usually more optimistic. This benchmark compares Morgan fingerprints, raw RDKit 2D descriptors, and raw Morgan + RDKit 2D descriptors using the exact same saved Step 04 splits. All preprocessing statistics are fit only on the training split."
+}
